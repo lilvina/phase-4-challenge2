@@ -1,5 +1,20 @@
 CREATE TABLE albums (
-  id SERIAL,
+  id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   artist VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  join_date date NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE reviews (
+  review_id INT NOT NULL PRIMARY KEY,
+  album_id INTEGER REFERENCES albums (id) NOT NULL,
+  user_id INTEGER REFERENCES users (id) NOT NULL,
+  review TEXT NOT NULL
 );
