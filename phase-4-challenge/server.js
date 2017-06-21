@@ -45,12 +45,21 @@ app.get('/albums/:albumID', (request, response) => {
   })
 })
 
-app.get('/signUp', (request,response) => {
-  response.render('signUp')
-})
+// app.get('/signUp', (request,response) => {
+//   response.render('signUp')
+// })
 
-app.post('/signUp', (request, response) => {
-  response.render('signUp')
+// app.post('/signUp', (request, response) => {
+//   response.render('signUp')
+// })
+app.get('/signUp', (request, response) => {
+  database.getUsers((error, user) => {
+    if (error) {
+      response.status(500).render('error', { error: error })
+    } else {
+      response.render('signUp', { users: users })
+    }
+  })
 })
 
 app.get('/signIn', (request, response) => {
@@ -63,9 +72,9 @@ app.get('/signIn', (request, response) => {
   })
 })
 
-app.post('/signIn', (request, response) => {
-  response.render('signIn')
-})
+// app.post('/signIn', (request, response) => {
+//   response.render('signIn')
+// })
 
 app.get('/review/:albumID', (request, response) => {
   const albumID = request.params.albumID

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Review</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script type="text/javascript" src="/script.js"></script>
+  </head>
+  <body>
+    <h1>Review for <%= album.title %></h1>
+
+    <form action="/user/<%= users.id %>">
+      <input type="text" name="review">
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>
